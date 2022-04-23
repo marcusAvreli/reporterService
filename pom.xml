@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+<packaging>war</packaging>
+  <groupId>reporterService</groupId>
+  <artifactId>reporterService</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <name>reporterService</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <log4j.version>1.2.17</log4j.version>
+	<slf4j.version>1.7.32</slf4j.version>
+	<mysql.version>5.1.49</mysql.version>
+	<gson.version>2.7</gson.version>
+	<jaxb.api.version>2.3.1</jaxb.api.version>
+	<javax.inject.version>1</javax.inject.version>
+	<jackson.version>2.12.2</jackson.version>
+	
+	
+	<jersey.version>1.19</jersey.version>	
+	<servlet.api.version>2.5</servlet.api.version>
+	<gson.version>2.7</gson.version>
+	
+	<google.guava.version>r05</google.guava.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>  
+    
+ 
+ 
+    
+            <!-- on charge for ignoring properties from json output -->
+            <!-- 
+<dependency>
+			<groupId>com.fasterxml.jackson.jaxrs</groupId>
+			<artifactId>jackson-jaxrs-json-provider</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+     -->
+    
+    
+    
+        
+
+  
+        
+    <dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>${mysql.version}</version>
+</dependency>
+    
+<!-- LOGGING -->    
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-api</artifactId>
+    <version>${slf4j.version}</version> 
+       
+</dependency>
+
+ <dependency>
+       <groupId>org.slf4j</groupId>
+       <artifactId>slf4j-log4j12</artifactId>       
+       <version>${slf4j.version}</version>
+   </dependency>
+       
+<dependency>
+    <groupId>log4j</groupId>
+    <artifactId>log4j</artifactId>    
+    <version>${log4j.version}</version>
+</dependency>
+   
+    
+    <!-- SERVICE -->
+            <dependency>
+   <groupId>com.sun.jersey</groupId>
+   <artifactId>jersey-servlet</artifactId>
+   <version>${jersey.version}</version>
+  </dependency>
+   <dependency>
+   <groupId>com.sun.jersey</groupId>
+   <artifactId>jersey-bundle</artifactId>
+   <version>${jersey.version}</version>
+  </dependency>
+  <dependency>
+   <groupId>com.sun.jersey</groupId>
+   <artifactId>jersey-json</artifactId>
+   <version>${jersey.version}</version>
+  </dependency>
+ 
+ <dependency>
+    <groupId>com.sun.jersey</groupId>
+    <artifactId>jersey-server</artifactId>
+    <version>${jersey.version}</version>
+</dependency>  
+   
+      <dependency>
+	<groupId>javax.servlet</groupId>
+	<artifactId>servlet-api</artifactId>
+	<version>${servlet.api.version}</version>
+</dependency>  
+
+   <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gson.version}</version>
+        </dependency>        
+        
+         <dependency>
+    <groupId>com.google.guava</groupId>
+    <artifactId>guava</artifactId>
+    <version>${google.guava.version}</version>
+</dependency>   
+
+  </dependencies>
+  
+  
+
+  <build>
+  
+  <sourceDirectory>src/main/java</sourceDirectory>
+
+   <finalName>reportService</finalName>
+   <plugins>
+    <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>2.3</version>
+            <configuration>
+             <warName>${finalName}</warName>
+             <outputDirectory>C:\tomcat9037\webapps</outputDirectory>
+            </configuration>
+        </plugin>
+   </plugins>
+   </build>
+</project>

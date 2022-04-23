@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" version="2.4">
+	<servlet>
+		<servlet-name>jersey</servlet-name>
+		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+		<init-param>
+			<param-name>com.sun.jersey.config.property.packages</param-name>
+			<param-value>reporterService.service;reporterService.resources;reporterService.providers</param-value>
+		</init-param>
+		<init-param>
+			<param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
+			<param-value>true</param-value>
+		</init-param>	
+				
+		<init-param>
+        <param-name>com.sun.jersey.spi.container.ContainerResponseFilters</param-name>
+        <param-value>reporterService.jaxrs.filters.MyCorsFilter</param-value>
+    </init-param>
+		<init-param>
+			<!-- rc.getResourceFilterFactories().add(new RolesAllowedResourceFilterFactory()); -->
+			<!-- rc.getResourceFilterFactories().add(new ElaborateResourceFilterFactory()); -->
+			<param-name>com.sun.jersey.spi.container.ResourceFilters</param-name>
+			<param-value>reporterService.jaxrs.filters.ElaborateResourceFilterFactory</param-value>
+		</init-param>
+
+    <!-- <init-param>
+        <param-name>com.sun.jersey.spi.container.ContainerResponseFilters</param-name>
+        <param-value>com.sun.jersey.api.container.filter.LoggingFilter</param-value>
+    </init-param>-->
+    <init-param>
+        <param-name>com.sun.jersey.config.feature.Trace</param-name>
+        <param-value>true</param-value>	
+</init-param>
+	<!--	<init-param>
+			<param-name>com.sun.jersey.spi.container.ResourceFilters</param-name>
+			<param-value>jerseyCinemaCrud.providers.SecurityContextFilterFactory</param-value>
+		</init-param>
+		<init-param>
+			<param-name>com.sun.jersey.spi.container.ContainerRequestFilters</param-name>
+			<param-value>jerseyCinemaCrud.providers.SecurityContextFilterFactory</param-value>
+		</init-param>
+		-->
+		
+		<!--
+		<init-param>
+         <param-name>com.sun.jersey.config.feature.DisableWADL</param-name>
+         <param-value>true</param-value>
+     </init-param>
+		
+		-->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>jersey</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+	
+
+	<listener>
+		<listener-class>reporterService.ApplicationInitializer</listener-class>
+	</listener>
+	<!--security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Force https</web-resource-name>
+			<description>Force https communication to the service</description>
+			<url-pattern>/*</url-pattern>
+		</web-resource-collection>
+
+		<user-data-constraint>
+			<transport-guarantee>NONE</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>-->
+<!--resource-ref>
+<description>DB connection</description>
+<res-ref-name>jdbc/</res-ref-name>
+<res-type>javax.sql.DataSource</res-type>
+<res-auth>Container</res-auth>
+</resource-ref-->
+</web-app>
