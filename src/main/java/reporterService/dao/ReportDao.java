@@ -6,13 +6,13 @@ import java.util.List;
 
 import reporterService.entity.Report;
 
-public interface ReportDao {
+public interface ReportDAO {
     List<Report> getReport(Connection connection,String procedureName) throws SQLException;
    
 
-   /* void create(Connection connection, String sql, Book book) throws SQLException;
+   int create(Connection connection, String sql, Report book) throws SQLException;
 
-    void update(Connection connection, String sql, Book book) throws SQLException;
+   /* void update(Connection connection, String sql, Book book) throws SQLException;
 
     void delete(Connection connection, String sql, long bookId) throws SQLException;
 

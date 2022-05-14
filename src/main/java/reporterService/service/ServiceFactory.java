@@ -1,5 +1,6 @@
 package reporterService.service;
 
+import reporterService.service.derby.DerbyServiceFactory;
 import reporterService.service.mysql.MySqlServiceFactory;
 
 public abstract class ServiceFactory {
@@ -7,6 +8,8 @@ public abstract class ServiceFactory {
         switch (db) {
             case "MySQL":
                 return MySqlServiceFactory.getInstance();
+            case "Derby":
+                return DerbyServiceFactory.getInstance();
             default:
                 throw new IllegalArgumentException();
         }

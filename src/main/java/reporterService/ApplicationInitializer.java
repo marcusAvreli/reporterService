@@ -33,7 +33,7 @@ import org.apache.log4j.Logger;
 
 
 
-
+//http://192.168.134.150:8080/identityiq/rest/XYZCustom/custom/
 //https://stackoverflow.com/questions/23277429/java-lang-abstractmethoderror-javax-ws-rs-core-uribuilder-uri/26767488
 public class ApplicationInitializer implements ServletContextListener {
 	 private static final Logger logger = LogManager.getLogger(ApplicationInitializer.class);

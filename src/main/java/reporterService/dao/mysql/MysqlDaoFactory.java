@@ -14,64 +14,69 @@ import org.apache.log4j.Logger;
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
 import reporterService.dao.DaoFactory;
-import reporterService.dao.ReportDao;
+import reporterService.dao.ReportDAO;
 import reporterService.dao.ReportFieldsDAO;
+import reporterService.dao.ReportResultDAO;
 
 public class MysqlDaoFactory extends DaoFactory {
-	 private static final Logger logger = LogManager.getLogger(MysqlDaoFactory.class);
-    private static MysqlDaoFactory instance;
-    private static DataSource ds ;
+	private static final Logger logger = LogManager.getLogger(MysqlDaoFactory.class);
+	private static MysqlDaoFactory instance;
+	private static DataSource ds;
 
-    private MysqlDaoFactory() {
-        Context initContext;
-        Context envContext;
-        //try {
-        	
-        	
-            //initContext = new InitialContext();
-            //envContext = (Context)initContext.lookup("java:/comp/env");
-           // ds = (DataSource)envContext.lookup("jdbc/librdb");
-           MysqlDataSource mysqlDS= new MysqlDataSource();
-    		mysqlDS.setURL("jdbc:mysql://192.168.134.150:3306/identityiq?noAccessToProcedureBodies=false&useInformationSchema=true");
-    		mysqlDS.setUser("root");
-    		mysqlDS.setPassword("root");
-    		ds = (DataSource)mysqlDS;
-            
-            
-        /*} catch (NamingException e) {
-            logger.error(e.getMessage(), e);
-            throw new IllegalStateException("Can not init MysqlDaoFactory, e");
+	private MysqlDaoFactory() {
+		Context initContext;
+		Context envContext;
+		// try {
 
-        }*/
-    }
+		// initContext = new InitialContext();
+		// envContext = (Context)initContext.lookup("java:/comp/env");
+		// ds = (DataSource)envContext.lookup("jdbc/librdb");
+		MysqlDataSource mysqlDS = new MysqlDataSource();
+		mysqlDS.setURL(
+				"jdbc:mysql://192.168.134.150:3306/identityiq?noAccessToProcedureBodies=false&useInformationSchema=true");
+		mysqlDS.setUser("root");
+		mysqlDS.setPassword("root");
+		ds = (DataSource) mysqlDS;
 
-    public static synchronized MysqlDaoFactory getInstance() {
-        if (instance == null) {
-            instance = new MysqlDaoFactory();
-        }
-        return instance;
-    }
+		/*
+		 * } catch (NamingException e) { logger.error(e.getMessage(), e); throw new
+		 * IllegalStateException("Can not init MysqlDaoFactory, e");
+		 * 
+		 * }
+		 */
+	}
 
-    public Connection getConnection() throws SQLException {
-        return ds.getConnection();
-    }
+	public static synchronized MysqlDaoFactory getInstance() {
+		if (instance == null) {
+			instance = new MysqlDaoFactory();
+		}
+		return instance;
+	}
 
-   
+	public Connection getConnection() throws SQLException {
+		return ds.getConnection();
+	}
 
-    @Override
-    public ReportDao getReportDao() {
-        return MySqlReportDao.getInstance();
-    }
-@Override
-public MySqlMyStoredProcedureDAO getMyStoredProcedureDAO(){
-	return MySqlMyStoredProcedureDAO.getInstance();
-}
-@Override
-public MySqlReportResultDao getMySqlReportResultDao(){
-	return MySqlReportResultDao.getInstance();
-}
-@Override
-public ReportFieldsDAO getReportFieldsDAO(){
-	return MySqlReportFieldsDAO.getInstance();
-} 
+	@Override
+	public ReportDAO getReportDao() {
+		return MySqlReportDao.getInstance();
+	}
+
+	@Override
+	public MySqlMyStoredProcedureDAO getMyStoredProcedureDAO() {
+		return MySqlMyStoredProcedureDAO.getInstance();
+	}
+
+	
+
+	@Override
+	public ReportFieldsDAO getReportFieldsDAO() {
+		return MySqlReportFieldsDAO.getInstance();
+	}
+
+	@Override
+	public ReportResultDAO getReportResultDAO() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

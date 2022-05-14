@@ -8,6 +8,6 @@ import java.util.List;
 import reporterService.entity.MyStoredProcedure;
 
 
-public interface MyStoredProcedureDAO {
+public interface StoredProcedureDAO {
 	 List<MyStoredProcedure> getMyStoredProcedures(Connection connection,String procedureName,HashMap<String,Object> inputParams) throws SQLException;
 }

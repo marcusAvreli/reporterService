@@ -17,6 +17,7 @@ public interface ReportService {
    // List<Book> getBooksByLetter(String letter);
    // List<Book> getBooksByGenreId(long id);
     List<Report> getReport();
+    int createReport(Report report);
     List<MyStoredProcedure> getMyStoredProcedures(String sqlCall, HashMap<String,Object> inputParams);
     List<ReportResult> getResult(String sqlCall, HashMap<String,Object> inputParams);
     

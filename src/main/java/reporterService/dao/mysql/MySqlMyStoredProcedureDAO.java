@@ -13,12 +13,12 @@ import org.apache.log4j.Logger;
 
 import reporterService.dao.GenericDao;
 import reporterService.dao.IdentityRequestDAO;
-import reporterService.dao.MyStoredProcedureDAO;
+import reporterService.dao.StoredProcedureDAO;
 import reporterService.entity.IdentityRequest;
 import reporterService.entity.MyStoredProcedure;
 import reporterService.entity.Report;
 
-public class MySqlMyStoredProcedureDAO extends GenericDao<MyStoredProcedure> implements MyStoredProcedureDAO{
+public class MySqlMyStoredProcedureDAO extends GenericDao<MyStoredProcedure> implements StoredProcedureDAO{
 	private static final Logger logger = LogManager.getLogger(MySqlMyStoredProcedureDAO.class);
 
 	

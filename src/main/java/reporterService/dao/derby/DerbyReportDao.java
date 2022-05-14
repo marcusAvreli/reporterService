@@ -1,4 +1,4 @@
-package reporterService.dao.mysql;
+package reporterService.dao.derby;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,17 +15,17 @@ import reporterService.dao.GenericDao;
 import reporterService.dao.ReportDAO;
 import reporterService.entity.Report;
 
-public class MySqlReportDao extends GenericDao<Report> implements ReportDAO {
-	 private static final Logger logger = LogManager.getLogger(MySqlReportDao.class);
+public class DerbyReportDao extends GenericDao<Report> implements ReportDAO {
+	 private static final Logger logger = LogManager.getLogger(DerbyReportDao.class);
 //	public class MysqlBookDao extends GenericDao<Book> implements BookDao {
-	    private static MySqlReportDao instance;
+	    private static DerbyReportDao instance;
 
-	    private MySqlReportDao() {
+	    private DerbyReportDao() {
 	    }
 
 	    public static synchronized ReportDAO getInstance() {
 	        if (instance == null) {
-	            instance = new MySqlReportDao();
+	            instance = new DerbyReportDao();
 	        }
 	        return instance;
 	    }
@@ -73,7 +73,7 @@ public class MySqlReportDao extends GenericDao<Report> implements ReportDAO {
 
 		@Override
 		public int create(Connection connection, String sql, Report book) throws SQLException {
-			// TODO Auto-generated method stub
+			logger.info("report to be created: "+book);
 			return -1;
 			
 		}

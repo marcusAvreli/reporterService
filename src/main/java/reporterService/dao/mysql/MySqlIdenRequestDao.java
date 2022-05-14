@@ -13,7 +13,7 @@ import org.apache.log4j.Logger;
 
 import reporterService.dao.GenericDao;
 import reporterService.dao.IdentityRequestDAO;
-import reporterService.dao.ReportDao;
+import reporterService.dao.ReportDAO;
 
 import reporterService.entity.IdentityRequest;
 import reporterService.entity.Report;

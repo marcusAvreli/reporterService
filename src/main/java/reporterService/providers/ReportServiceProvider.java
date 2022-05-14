@@ -6,9 +6,7 @@ import javax.ws.rs.ext.Provider;
 import com.sun.jersey.spi.inject.SingletonTypeInjectableProvider;
 
 
-import reporterService.dao.mysql.MysqlDaoFactory;
 import reporterService.service.ServiceFactory;
-import reporterService.service.mysql.MySqlServiceFactory;
 
 @Provider
 public class ReportServiceProvider extends SingletonTypeInjectableProvider<Context, ServiceFactory> {
@@ -17,7 +15,7 @@ public class ReportServiceProvider extends SingletonTypeInjectableProvider<Conte
 			
 			//super(MysqlDaoFactory.class, MysqlDaoFactory.getInstance());
 			//super(MySqlServiceFactory.class, MySqlServiceFactory.getInstance());
-			super(ServiceFactory.class, ServiceFactory.getServiceFactory("MySQL"));
+			super(ServiceFactory.class, ServiceFactory.getServiceFactory("Derby"));
 		}
 	
 }

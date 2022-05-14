@@ -10,9 +10,9 @@ public class Report implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	int id;
-	String name;
-	String descripion;
+	private int id;
+	private String name;
+	private String description;
 	public int getId() {
 		return id;
 	}
@@ -25,10 +25,10 @@ public class Report implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getDescripion() {
-		return descripion;
+	public String getDescription() {
+		return description;
 	}
-	public void setDescripion(String descripion) {
-		this.descripion = descripion;
+	public void setDescription(String descripion) {
+		this.description = descripion;
 	}
 }

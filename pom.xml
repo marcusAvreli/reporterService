@@ -23,7 +23,7 @@
 	<jaxb.api.version>2.3.1</jaxb.api.version>
 	<javax.inject.version>1</javax.inject.version>
 	<jackson.version>2.12.2</jackson.version>
-	
+	 <derby.version>10.14.2.0</derby.version>
 	
 	<jersey.version>1.19</jersey.version>	
 	<servlet.api.version>2.5</servlet.api.version>
@@ -54,7 +54,12 @@
     
     
     
-        
+     <dependency>
+
+    <groupId>org.apache.derby</groupId>
+    <artifactId>derbyclient</artifactId>
+    <version>${derby.version}</version>
+</dependency>    
 
   
         

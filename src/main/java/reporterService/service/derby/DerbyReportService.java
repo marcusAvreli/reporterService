@@ -1,4 +1,4 @@
-package reporterService.service.mysql;
+package reporterService.service.derby;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -10,8 +10,10 @@ import org.slf4j.LoggerFactory;
 
 import com.sun.jersey.spi.resource.Singleton;
 
+import reporterService.App;
 import reporterService.dao.DaoFactory;
 import reporterService.dao.StoredProcedureDAO;
+import reporterService.dao.derby.DerbyDaoFactory;
 import reporterService.dao.mysql.MysqlDaoFactory;
 import reporterService.dao.ReportDAO;
 import reporterService.dao.ReportFieldsDAO;
@@ -22,7 +24,7 @@ import reporterService.entity.ReportResult;
 import reporterService.service.ReportService;
 
 @Singleton
-public class MySqlReportService implements ReportService{
+public class DerbyReportService implements ReportService{
 
     private static DaoFactory daoFactory;
     private static ReportDAO reportDao;
@@ -30,17 +32,17 @@ public class MySqlReportService implements ReportService{
     private static ReportResultDAO reportResultDao;
     private static ReportFieldsDAO reportFieldsDao;
     
-    private static final Logger logger = LoggerFactory.getLogger(MySqlReportService.class);
+    private static final Logger logger = LoggerFactory.getLogger(DerbyReportService.class);
 
 	/**
      * Block initializes objects for working with dao layer
      */
     {
         try {
-            daoFactory = MysqlDaoFactory.getInstance();
+            daoFactory = DerbyDaoFactory.getInstance();
             reportDao = daoFactory.getReportDao();
             myStoredProcedureDao = daoFactory.getMyStoredProcedureDAO();
-            reportResultDao = daoFactory.getReportResultDAO();
+            reportResultDao = daoFactory.getReportResultDAO();            							
             reportFieldsDao = daoFactory.getReportFieldsDAO();
             
             //authorDao = daoFactory.getAuthorDao();
@@ -99,8 +101,28 @@ public class MySqlReportService implements ReportService{
 	}
 	@Override
 	public int createReport(Report report) {
-		// TODO Auto-generated method stub
-		return -1;
+		String sql = "insert into report (name,description,type) values ('report_3','report3_description','identity') ";
+		logger.info("create report");
+		 Connection connection = null;
+		int generatedId = -1;
+		try {
+			logger.info("checkpost_1");
+			connection = daoFactory.getConnection();
+			logger.info("checkpost_2");
+			generatedId = reportDao.create(connection, sql, report);
+			logger.info("checkpost_3");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return generatedId;
 		
 	}
 

@@ -13,7 +13,7 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
 import reporterService.dao.GenericDao;
-import reporterService.dao.ReportDao;
+import reporterService.dao.ReportDAO;
 import reporterService.dao.ReportResultDAO;
 import reporterService.entity.Report;
 import reporterService.entity.ReportFields;
